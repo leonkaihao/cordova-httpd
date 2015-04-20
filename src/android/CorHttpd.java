@@ -43,13 +43,26 @@ public class CorHttpd extends CordovaPlugin {
     private static final String OPT_PORT = "port";
     private static final String OPT_LOCALHOST_ONLY = "localhost_only";
 
-    private String www_root = "";
-	private int port = 8888;
-	private boolean localhost_only = false;
+    private String www_root = "/www";
+	private int port = 9527;
+	private boolean localhost_only = true;
 
-	private String localPath = "";
+	private String localPath = www_root;
 	private WebServer server = null;
 	private String	url = "";
+    
+    @Override
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+        // your init code here
+        cordova.getActivity().runOnUiThread(new Runnable(){
+            @Override
+            public void run() {
+                String errmsg = __startServer();
+                url = "http://" + __getLocalIpAddress() + ":" + port;
+            }
+        });
+    }
 
     @Override
     public boolean execute(String action, JSONArray inputs, CallbackContext callbackContext) throws JSONException {
