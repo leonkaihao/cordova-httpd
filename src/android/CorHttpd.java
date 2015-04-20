@@ -52,12 +52,14 @@ public class CorHttpd extends CordovaPlugin {
 	private String localPath = www_root;
 	private WebServer server = null;
 	private String	url = "";
-
+    
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         webView.loadUrl("javascript:console.log('server init start');");
+        System.out.println("server init start");
         super.initialize(cordova, webView);   
         webView.loadUrl("javascript:console.log('ready to init');");  
+        System.out.println("ready to init");
         // your init code here
         cordova.getActivity().runOnUiThread(new Runnable(){
             @Override
@@ -67,7 +69,9 @@ public class CorHttpd extends CordovaPlugin {
             }
         });
         webView.loadUrl("javascript:console.log('init OK');"); 
+        System.out.println("init OK");
     }
+
 
     @Override
     public boolean execute(String action, JSONArray inputs, CallbackContext callbackContext) throws JSONException {
