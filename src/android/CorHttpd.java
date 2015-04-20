@@ -55,9 +55,9 @@ public class CorHttpd extends CordovaPlugin {
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-        this.echo('server init start');
+        this.echo("server init start");
         super.initialize(cordova, webView);        
-        this.echo('ready to init');
+        this.echo("ready to init");
         // your init code here
         cordova.getActivity().runOnUiThread(new Runnable(){
             @Override
@@ -66,7 +66,7 @@ public class CorHttpd extends CordovaPlugin {
                 url = "http://" + __getLocalIpAddress() + ":" + port;
             }
         });
-        this.echo('init OK');
+        this.echo("init OK");
     }
 
     @Override
