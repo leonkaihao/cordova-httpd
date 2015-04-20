@@ -8,8 +8,10 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
+import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.PluginResult;
 import org.apache.cordova.PluginResult.Status;
 import org.apache.http.conn.util.InetAddressUtils;
@@ -50,7 +52,7 @@ public class CorHttpd extends CordovaPlugin {
 	private String localPath = www_root;
 	private WebServer server = null;
 	private String	url = "";
-    
+
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
